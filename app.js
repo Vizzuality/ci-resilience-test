@@ -13,7 +13,7 @@ function main() {
     var map = new L.Map('map', {
         zoomControl: true,
         drawnControl: true,
-        center: [4.159769621076605, -72.93013669999999],
+        center: [6.489983332670651, 37.6171875],
         zoom: 5
     });
 
@@ -50,7 +50,7 @@ function main() {
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
     var drawControl = new L.Control.Draw({
-        position: 'bottomleft',
+        position: 'topleft',
         draw: {
             polyline: false,// Turns off this drawing tool
             marker: false,
@@ -128,7 +128,7 @@ function main() {
            
         if (pol_pgis) {
             
-            q = "SELECT avg(dn) as average from chirps_example_clipped where st_intersects(the_geom_webmercator, " + pol_pgis +") ";
+            q = "SELECT round(avg(dn)::numeric,2) as average from chirps_example_clipped where st_intersects(the_geom_webmercator, " + pol_pgis +") ";
 
 
 
